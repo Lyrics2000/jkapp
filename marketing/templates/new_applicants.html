@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+   <!-- Page Wrapper -->
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+				
+					<div class="page-header">
+						<div class="row align-items-center">
+							<div class="col">
+								<h3 class="page-title">New Applications</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+									<li class="breadcrumb-item active">New Applications</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				
+					<div class="row">
+						<div class="col-sm-12">
+						
+							<div class="card card-table">
+								<div class="card-header">
+									<h4 class="card-title">New Applications</h4>
+                                    <h6><INPUT type="checkbox" id="select_all" onchange="checkAll(this)" name="chk[]" />Select All</h6>
+								</div>
+
+								<div class="card-body">
+									<div class="table-responsive">
+										<table  id="example" class="table table-hover table-center mb-0">
+											<thead>
+												<tr>
+                                                    <th>
+                                                    #
+                                                    </th>
+													
+                                                        <th>
+                                                            Name
+                                                        </th>
+                                                        <th>
+                                                            ID Number
+                                                        </th>
+                                                        <th class="hidden-xs">
+                                                                Tag Number
+                                                        </th>
+                                                        <th class="hidden-xs">
+                                                            Phone Number 
+                                                        </th>
+                                                        <th class="hidden-xs">
+                                                            Email
+                                                        </th>
+                                                        <th class="hidden-xs">
+                                                            Department
+                                                        </th>
+                                                        <th class="hidden-xs">
+                                                            Vehicle Type
+                                                        </th>
+                                                        <th class="hidden-xs">
+                                                            Vehicle Reg Number
+                                                        </th>
+                                                        <th class="hidden-xs">
+                                                            Log Book Number
+                                                        </th>
+                                                        <th class="hidden-xs">
+                                                            Duration
+                                                        </th>
+                                                        
+													<th class="text-right">Action</th>
+												</tr>
+											</thead>
+											<tbody>
+												
+													
+													{% if application %}
+                                                {% for p in application %}
+                                                <tr>
+                                                        <td><label></label></td>
+                                                        
+                                                        <td>
+                                                            {{p.applicants_name}}
+                                                        </td>
+                                                        <td>
+                                                            {{p.applicants_id_number}}
+                                                        </td>
+                                                        <td>
+                                                            {{p.applicants_tag_number}}
+                                                        </td>
+                                                        <td >
+                                                            {{p.applicants_phone_number}}
+                                                        </td>
+                                                        <td >
+                                                            {{p.applicants_email}}
+                                                        </td>
+                                                        <td>
+                                                            {{p.applicants_department}}
+                                                        </td>
+                                                            <td>
+                                                            {{p.applicants_vehicle_type}}
+                                                        </td>
+                                                        <td>
+                                                            {{p.applicants_car_reg_number}}
+                                                        </td>
+                                                        <td>
+                                                            {{p.applicants_log_book_number}}
+                                                        </td>
+                                                            <td>
+                                                            {{p.aplicants_duration}}
+                                                        </td>
+                                                        <td class="text-right">
+                                                            <div class="actions">
+                                                                <a href="#" class="btn btn-sm bg-success-light mr-2">
+                                                                    <i class="fe fe-pencil"></i> Edit
+                                                                </a>
+                                                                <a href="{{p.get_absolute_url}}" class="btn btn-sm bg-danger-light">
+                                                                    <i class="fe fe-trash"></i> Delete
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                                {% endif %}
+													
+											
+												
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							
+						</div>					
+					</div>					
+				</div>			
+			</div>
+			<!-- /Page Wrapper -->
+
+
+
+
+
+
+{% endblock content %}
+
+
+{% block extra_script %}
+<script>
+    function checkAll(ele){
+        var check_box =  document.getElementById("select_all")
+        if (ele.checked){
+            for (var i = 0; i < checkboxes.length; i++) {
+             if (checkboxes[i].type == 'checkbox') {
+                 checkboxes[i].checked = true;
+             }
+         }
+        }
+    }
+</script>
+
+{% endblock extra_script %}
